@@ -9,11 +9,11 @@ class handler(BaseHTTPRequestHandler):
 
         if 'country' in query_params:
             country_name = query_params['country'][0]
-            capital = self.get_capital_by_country_name(country_name)
+            capital = self.get_capital_by_country(country_name)
             response_message = f"The capital of {country_name} is {capital}"
         elif 'capital' in query_params:
             capital_name = query_params['capital'][0]
-            country = self.get_country_by_capital_name(capital_name)
+            country = self.get_country_by_capital(capital_name)
             response_message = f"{capital_name} is the capital of {country}"
         else:
             response_message = "Please provide a country or a capital"
