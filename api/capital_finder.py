@@ -25,14 +25,14 @@ class handler(BaseHTTPRequestHandler):
         return
     
     def get_capital_by_country(self, country_name):
-        url = f"https://restcountries.com/v3.1/name/{country_name}?fields=countries/capital"
+        url = f"https://restcountries.com/v3.1/name/{country_name}?fields=name,capital"
         response = requests.get(url)
         data = response.json()
-        return data[0]['countries'][0]['capital']
+        return data[0]['name'][0]['common']
     
     def get_country_by_capital(self, capital_name):
-        url = f"https://restcountries.com/v3.1/capital/{capital_name}?fields=capital/country"
+        url = f"https://restcountries.com/v3.1/capital/{capital_name}?fields=capital,country"
         response = requests.get(url)
         data = response.json()
-        return data[0]['countries'][0]['name']
+        return data[0]['capital'][0]
     
