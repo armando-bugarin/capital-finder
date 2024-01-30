@@ -28,11 +28,11 @@ class handler(BaseHTTPRequestHandler):
         url = f"https://restcountries.com/v3.1/name/{country_name}?fields=name,capital"
         response = requests.get(url)
         data = response.json()
-        return data[0]['name'][0]['common']
+        return data[0]['capital'][0]
     
     def get_country_by_capital(self, capital_name):
-        url = f"https://restcountries.com/v3.1/capital/{capital_name}?fields=capital,country"
+        url = f"https://restcountries.com/v3.1/capital/{capital_name}?fields=name"
         response = requests.get(url)
         data = response.json()
-        return data[0]['capital'][0]
+        return data[0]['name']['common']
     
